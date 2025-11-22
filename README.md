@@ -1,2 +1,4 @@
-# Wallpapers
-Collection of wallpapers
+# 🌄 Wallpapers Collection
+
+A collection of wallpapers. 
+
