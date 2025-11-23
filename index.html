@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Wallpapers Gallery</title>
+	<!-- <link rel="icon" type="image/png" href="assets/favicon.png"> -->
+	<link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+	<!-- NAV (normal) -->
+	<nav>
+		<div class="brand">
+			<div class="title">Wallpapers Gallery</div>
+		</div>
+
+		<div class="nav-right">
+			<a class="nav-link" onclick="window.open(githubRepoUrl,'_blank')">  GitHub</a>
+			<a class="nav-link" onclick="aboutDialog()">󰋽 About</a>
+		</div>
+	</nav>
+
+	<main class="container" role="main">
+		<header class="header">
+			<p class="subtitle" id="subtitle">A curated collection of wallpapers stored in this GitHub repository —
+				browse, search, and preview in a clean, responsive gallery.</p>
+
+			<div class="controls">
+				<div class="search" role="search" aria-label="Search wallpapers">
+					<svg width="16" height="16" viewBox="0 0 24 24">
+						<path fill="currentColor"
+							d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM10 14a4 4 0 110-8 4 4 0 010 8z" />
+					</svg>
+					<input id="searchInput" type="search" placeholder="Search by filename..." />
+				</div>
+
+				<button class="btn" id="shuffleBtn">Shuffle Featured</button>
+			</div>
+		</header>
+
+		<!-- Featured -->
+		<section class="featured" id="featured">
+			<div class="hero" id="hero">
+				<div class="loader" id="featuredLoader"></div>
+			</div>
+			<aside class="meta" id="featureMeta">
+				<div class="file-name" id="featureName">Loading…</div>
+				<div class="meta-row" id="featureInfo">From your GitHub repository</div>
+				<div class="meta-actions">
+					<button class="btn" id="viewBtn">View</button>
+					<button class="btn" id="downloadBtn">Download</button>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Gallery -->
+		<section id="galleryWrap">
+			<div id="loadingWrap">
+				<div class="loader" id="pageLoader"></div>
+			</div>
+
+			<div class="grid" id="gallery"></div>
+
+			<div class="empty" id="emptyState" style="display:none">No wallpapers found.</div>
+		</section>
+
+		<!-- Modal (preview) -->
+		<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+			<div class="modal" role="document">
+				<div class="modal-img-wrap">
+					<img class="modal-img" id="modalImg" src="" alt="Full preview" />
+					<button class="modal-nav modal-prev" id="prevBtn" title="Previous"> </button>
+					<button class="modal-nav modal-next" id="nextBtn" title="Next"> </button>
+					<button class="modal-close" id="closeBtn" title="Close">✕</button>
+				</div>
+				<div class="modal-bottom">
+					<div class="modal-info">
+						<div class="modal-title" id="modalName"></div>
+						<div class="modal-meta" id="modalMeta"></div>
+					</div>
+
+					<div class="modal-actions">
+						<button class="modal-action-btn" id="openOriginal">Open</button>
+						<button class="modal-action-btn" id="downloadBtnModal">Download ⬇</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- About dialog -->
+		<dialog id="aboutDlg" class="about-dialog">
+			<div class="about-inner">
+				<h2 class="about-title">About</h2>
+				<p class="about-text">
+					This gallery loads images directly from my GitHub repository and displays them in a fast,
+					responsive interface.
+				</p>
+				<p class="about-repo">
+					<strong>Repository:</strong>
+					<span id="aboutRepo"></span>
+				</p>
+				<button id="aboutClose" class="about-close">Close</button>
+			</div>
+		</dialog>
+	</main>
+
+	<footer>
+		<div>Made with ❤️ — Hosted on GitHub Pages</div>
+	</footer>
+
+	<script src="assets/script.js"></script>
+</body>
+
+</html>
