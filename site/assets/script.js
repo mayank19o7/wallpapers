@@ -10,7 +10,6 @@ const CONFIG = {
 
 const githubRepoUrl = `https://github.com/${CONFIG.owner}/${CONFIG.repo}`;
 const apiBase = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.folder}?ref=${CONFIG.branch}`;
-const cacheKey = "wallpapers-cache-v1";
 const IMAGE_REGEX = /\.(jpg|jpeg|png|webp|gif)$/i;
 const $ = id => document.getElementById(id);
 
@@ -341,14 +340,7 @@ function aboutDialog() { aboutDlg.showModal(); }
  ********************************************/
 async function boot() {
 	try {
-		let data;
-		const cached = localStorage.getItem(cacheKey);
-
-		if (cached) data = JSON.parse(cached);
-		else {
-			data = await fetchRepoContents();
-			localStorage.setItem(cacheKey, JSON.stringify(data)); // store the raw data
-		}
+		const data = await fetchRepoContents();
 
 		// Accept array result, ensure filtering of images
 		files = Array.isArray(data)
